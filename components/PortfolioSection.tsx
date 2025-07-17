@@ -2,13 +2,27 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, ShoppingCart, Palette, TrendingUp } from 'lucide-react';
+import { X, ExternalLink, ShoppingCart, Palette, TrendingUp, LucideIcon } from 'lucide-react';
+
+// Define the Project interface
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  description: string;
+  longDescription: string;
+  image: string;
+  tags: string[];
+  results: string;
+  icon: LucideIcon;
+  color: string;
+}
 
 const PortfolioSection = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [hoveredProject, setHoveredProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
 
-  const projects = [
+  const projects: Project[] = [
     {
       id: 1,
       title: 'EcoTech Store',
@@ -190,10 +204,12 @@ const PortfolioSection = () => {
               
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <selectedProject.icon 
-                    size={24} 
-                    style={{ color: selectedProject.color }}
-                  />
+                  {selectedProject.icon && (
+                    <selectedProject.icon 
+                      size={24} 
+                      style={{ color: selectedProject.color }}
+                    />
+                  )}
                   <span 
                     className="text-xs px-3 py-1 rounded-full font-medium"
                     style={{ backgroundColor: `${selectedProject.color}20`, color: selectedProject.color }}

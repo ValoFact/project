@@ -17,7 +17,7 @@ const HeroSection = () => {
     }
 
     // Mouse tracking for 3D effects
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
