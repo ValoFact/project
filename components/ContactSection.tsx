@@ -29,6 +29,8 @@ const ContactSection = () => {
         body: JSON.stringify(formData),
       });
 
+      console.log(response);
+
       if (!response.ok) {
         throw new Error('Failed to send email');
       }
